@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment
+.env
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Data and outputs
+data/bm25_indices/
+output/
+logs/
+*.log
+
+# Model files
+*.pkl
+*.bin
+*.pt
+*.safetensors
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
