@@ -17,15 +17,27 @@ QA_SYSTEM_PROMPT = """You are an expert RFP analyst assistant. Answer user quest
 
 Rules:
 1. ONLY use information from the provided evidence passages.
-2. Always cite your sources: mention the document name and page.
-3. If the answer is not in the passages, say "This information was not found in the documents."
-4. Be precise and concise.
-5. For comparisons, organize clearly with headers.
-6. CRITICAL - ADDENDUM PRECEDENCE: Addendums (e.g. Addendum 1, Addendum 2) strictly supersede and override the original RFP. If an addendum modifies or extends a deadline, due date, or specification (for example, "The new due date for this RFP will be July 9, 2024 at 2:00 PM CST"), ALWAYS state the addendum's updated value as the final authoritative answer and explain that it overrides earlier documents."""
+2. Always cite your sources: mention the exact document name and page number.
+3. If the answer is not in the passages, state clearly what could not be found.
+4. Be precise, thorough, and analytical.
+5. CROSS-BID COMPARISONS: When comparing multiple bids:
+   - Structure your response with a dedicated section for Bid 1 (Dallas ISD - Student & Staff Computing Devices), a dedicated section for Bid 2 (State of Maryland - Dell Laptops w/ Extended Warranty), followed by a clear Side-by-Side Comparison Breakdown/Table.
+   - NEVER confuse documents within the same bid folder (e.g. portal HTML vs main RFP PDF) as separate bids. A bid consists of ALL its documents together.
+   - Compare all key dimensions: duration/coverage (e.g. 1-year vs 3-year), start dates (in-service vs delivery), service terms (repair SLAs, turnaround time, hot-swap loaners, parts stock), and Addendum modifications (e.g. Dallas ISD Addendum 1 requiring OEM-only warranty with no Accidental Damage Protection).
+6. ADDENDUM PRECEDENCE: Addendums (e.g. Addendum 1, Addendum 2) strictly supersede and override the original RFP. Always prioritize and highlight the addendum's updated terms as the authoritative source."""
 
 REPORT_SYSTEM_PROMPT = """You are generating a final JSON report for an RFP extraction system.
 Produce a clean, structured JSON following the exact schema provided.
 Return ONLY valid JSON, no explanation or markdown."""
+
+
+def _is_comparison_query(question: str, bid_id: Optional[str]) -> bool:
+    """Check if the user is asking to compare across multiple bids."""
+    if bid_id is not None:
+        return False
+    q = question.lower()
+    comp_keywords = ["compare", "both bids", "each bid", "difference", "versus", " vs ", "across bids", "between the bids"]
+    return any(k in q for k in comp_keywords)
 
 
 def answer_question(
@@ -34,10 +46,86 @@ def answer_question(
     engine: HybridSearchEngine,
     top_k: int = 8,
 ) -> str:
-    """Answer a natural-language question about bids using RAG with Addendum Precedence."""
+    """Answer a natural-language question about bids using RAG with Addendum Precedence and Cross-Bid Comparison support."""
     llm = get_llm()
+    q_lower = question.lower()
 
-    # Search for relevant content
+    # ── CASE 1: Cross-Bid Comparison Query ─────────────────────────────────────
+    if _is_comparison_query(question, bid_id):
+        # Discover all available bids
+        known_bids = ["Bid1", "Bid2"]
+        try:
+            db_bids = engine.vector_store.chunks.distinct("bid_id")
+            if db_bids:
+                known_bids = sorted(list(set(db_bids)))
+        except Exception:
+            pass
+
+        bid_evidence_blocks = []
+        for b in known_bids:
+            # 1. Search this bid specifically
+            b_req = SearchQuery(
+                query=question,
+                bid_id=b,
+                top_k=6,
+                use_rerank=True,
+                expand_query=True,
+            )
+            b_resp = engine.search(b_req)
+            b_results = list(b_resp.results)
+
+            # 2. Check for addenda in this bid
+            if any(k in q_lower for k in ["warranty", "guarantee", "deadline", "due date", "spec", "addendum", "repair"]):
+                try:
+                    add_req = SearchQuery(
+                        query=f"addendum warranty specifications {question}",
+                        bid_id=b,
+                        top_k=4,
+                        doc_types=[DocType.ADDENDUM],
+                        use_rerank=True,
+                    )
+                    add_resp = engine.search(add_req)
+                    seen_ids = {r.chunk_id for r in b_results}
+                    for ar in reversed(add_resp.results):
+                        if ar.chunk_id not in seen_ids:
+                            b_results.insert(0, ar)
+                            seen_ids.add(ar.chunk_id)
+                except Exception as e:
+                    logger.warning(f"Addendum search error for [{b}]: {e}")
+
+            if b_results:
+                b_label = (
+                    "BID 1: DALLAS ISD (JA-207652 Student and Staff Computing Devices)"
+                    if "bid1" in b.lower()
+                    else "BID 2: STATE OF MARYLAND (PORFP #E20P4600040 - Dell Laptops w/ Extended Warranty)"
+                    if "bid2" in b.lower()
+                    else f"BID: {b}"
+                )
+                b_text = "\n\n".join(
+                    f"[Source: {r.file_name}, Page {r.page_number} | DocType: {r.doc_type.value}]\n{r.text}"
+                    for r in b_results
+                )
+                bid_evidence_blocks.append(f"=== {b_label} ===\n{b_text}")
+
+        if not bid_evidence_blocks:
+            return "This information was not found in the documents."
+
+        combined_evidence = "\n\n" + ("=" * 70) + "\n\n".join(bid_evidence_blocks)
+
+        prompt = f"""Question: {question}
+
+Evidence grouped by bid:
+{combined_evidence}
+
+Please provide a detailed, side-by-side comparison answering the question:
+1. Summarize the requirements for Bid 1 (Dallas ISD), citing documents and noting any Addendum changes.
+2. Summarize the requirements for Bid 2 (State of Maryland), citing documents.
+3. Provide a clear Comparison highlighting differences in duration, start dates, repair SLAs (e.g., hot-swap/turnaround), Accidental Damage Protection, and OEM warranty rules.
+4. Cite sources with filename and page number for every point."""
+
+        return llm.chat(prompt, system=QA_SYSTEM_PROMPT, temperature=0.1)
+
+    # ── CASE 2: Single-Bid or Specific Target Query ────────────────────────────
     search_req = SearchQuery(
         query=question,
         bid_id=bid_id,
@@ -49,7 +137,6 @@ def answer_question(
     results = list(response.results)
 
     # Ensure addendum overrides are never missed for date/specification queries
-    q_lower = question.lower()
     if any(k in q_lower for k in ["deadline", "due date", "when", "date", "change", "addendum", "spec", "meeting"]):
         try:
             add_req = SearchQuery(
