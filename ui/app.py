@@ -389,11 +389,26 @@ with tab_extract:
             cols[i % 4].markdown(f"✔ {f}")
 
         st.markdown("")
-        extract_btn = st.button("🤖 Run Extraction", use_container_width=False)
+        col_btn1, col_btn2 = st.columns([1, 2])
+        with col_btn1:
+            extract_btn = st.button("🤖 Run Live Extraction", use_container_width=True)
+        with col_btn2:
+            existing_file = ROOT / "output" / f"{extract_bid}_extraction.json"
+            load_existing_btn = st.button(
+                "📂 Load Saved Results",
+                use_container_width=False,
+                disabled=not existing_file.exists(),
+                help="Instantly loads pre-computed extraction JSON if available",
+            )
+
+        if load_existing_btn and existing_file.exists():
+            with open(existing_file, "r", encoding="utf-8") as f:
+                st.session_state["extraction_result"] = json.load(f)
+            st.success(f"✅ Loaded saved extraction results for **{extract_bid}**!")
 
         if extract_btn:
             bid_folder = str(ROOT / "data" / "bids" / extract_bid)
-            with st.spinner(f"Extracting data from **{extract_bid}**… (takes 1–3 minutes)"):
+            with st.spinner(f"Running multi-agent extraction on **{extract_bid}**… (takes ~1.5 minutes)"):
                 try:
                     from agents.orchestrator import RFPOrchestrator
                     orch = RFPOrchestrator()
