@@ -105,10 +105,29 @@ Streamlit Web UI (4 tabs: Search, Q&A Chat, Extract, Results)
 
 ## Quick Start
 
+### ⚡ One-Command Start (Recommended for Evaluators)
+
+Run **one command** to launch the entire platform:
+
+```bash
+python run.py
+```
+*(Or simply double-click `run.bat` on Windows, or run `./run.sh` on Linux/macOS)*
+
+This command automatically:
+1. Validates your Python environment (3.10+)
+2. Initializes `.env` from `.env.example` if not already present
+3. Verifies and installs missing dependencies
+4. Launches the interactive Streamlit Web UI at **`http://localhost:8501`**
+
+---
+
+### 🛠️ Manual Step-by-Step Setup
+
 ```bash
 # 1. Clone and install
-git clone <repo-url>
-cd rfp-intelligence
+git clone https://github.com/altamashforreal/Emplay-Assignment.git
+cd Emplay-Assignment
 pip install -r requirements.txt
 
 # 2. Configure environment
