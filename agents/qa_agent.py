@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional
 from loguru import logger
 
 from agents.llm_client import get_llm
-from models import BidExtraction, ExtractedField, SearchQuery, SharedState, ValidationResult
+from models import BidExtraction, DocType, ExtractedField, SearchQuery, SharedState, ValidationResult
 from search.retrieval import HybridSearchEngine
 
 QA_SYSTEM_PROMPT = """You are an expert RFP analyst assistant. Answer user questions about bid documents.
@@ -53,21 +53,20 @@ def answer_question(
     if any(k in q_lower for k in ["deadline", "due date", "when", "date", "change", "addendum", "spec", "meeting"]):
         try:
             add_req = SearchQuery(
-                query=f"addendum {question}",
+                query=f"addendum due date extend deadline {question}",
                 bid_id=bid_id,
-                top_k=4,
+                top_k=5,
                 doc_types=[DocType.ADDENDUM],
                 use_rerank=True,
             )
             add_resp = engine.search(add_req)
             seen_ids = {r.chunk_id for r in results}
-            for ar in add_resp.results:
+            for ar in reversed(add_resp.results):
                 if ar.chunk_id not in seen_ids:
-                    # Place addendum chunks at the top of the evidence
                     results.insert(0, ar)
                     seen_ids.add(ar.chunk_id)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning(f"Addendum retrieval warning: {e}")
 
     if not results:
         return "This information was not found in the documents."
