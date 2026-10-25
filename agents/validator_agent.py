@@ -130,21 +130,23 @@ def run_validator_agent(state: SharedState) -> SharedState:
 
             if not result.passed:
                 retry_count = state.retry_counts.get(field_name, 0)
-                if retry_count < 3:  # max 3 retries per field
+                if retry_count < 1:  # max 1 retry attempt per field
+                    state.retry_counts[field_name] = retry_count + 1
                     failed_fields.append(field_name)
                     logger.warning(
                         f"  ✗ {field_name}: {result.reason} "
-                        f"(retry {retry_count + 1}/3)"
+                        f"(scheduling retry 1/1)"
                     )
                 else:
                     logger.warning(
-                        f"  ✗ {field_name}: max retries reached, accepting as-is"
+                        f"  ✗ {field_name}: retry attempted, accepting as not found"
                     )
             else:
                 logger.debug(f"  ✓ {field_name} (conf={result.confidence:.2f})")
 
         state.validation_results = validation_results
         state.failed_fields = failed_fields
+        state.iteration += 1
 
         passed = sum(1 for r in validation_results if r.passed)
         not_found = sum(1 for r in validation_results
