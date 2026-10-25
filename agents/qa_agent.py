@@ -56,7 +56,7 @@ def answer_question(
                 query=f"addendum {question}",
                 bid_id=bid_id,
                 top_k=4,
-                doc_type=DocType.ADDENDUM,
+                doc_types=[DocType.ADDENDUM],
                 use_rerank=True,
             )
             add_resp = engine.search(add_req)
