@@ -8,16 +8,16 @@ QA_LOG = [
         "question": "What is the submission deadline for this bid?",
         "bid_id": "Bid1",
         "answer": (
-            "The bid documents indicate that the submission deadline is listed in the Bid Activities section "
-            "of the portal. Vendors are advised to monitor the iSupplier portal for the exact date and time. "
-            "Questions must be submitted sufficiently in advance of the due date to allow time for responses "
-            "prior to the receipt/opening date. "
-            "(Source: JA-207652 Student and Staff Computing Devices FINAL.pdf, Pages 2, 9, 32)"
+            "While the original RFP documents noted that the deadline was listed in the portal Bid Activities, "
+            "Addendum No. 2 officially extended the due date: 'The Purpose of this Addendum is to extend the due date "
+            "of this RFP. The new due date for this RFP will be July 9, 2024 at 2:00 PM CST.' Bidders must acknowledge "
+            "and submit a signed copy with their proposal. "
+            "(Source: Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, Page 1; "
+            "JA-207652 Student and Staff Computing Devices FINAL.pdf, Page 2)"
         ),
         "sources": [
+            {"file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf", "page": 1},
             {"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 2},
-            {"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 9},
-            {"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 32},
         ]
     },
     {
@@ -39,9 +39,10 @@ QA_LOG = [
         "question": "What changed in Addendum 2?",
         "bid_id": "Bid1",
         "answer": (
-            "Addendum 2 to RFP JA-207652 introduces revisions to the original bid specifications. "
-            "Key changes include updated technical requirements and clarifications to the submission instructions. "
-            "Vendors must acknowledge receipt of this addendum in their submitted proposals. "
+            "Addendum 2 to RFP JA-207652 formally extends the due date for the RFP. "
+            "Specifically: 'The Purpose of this Addendum is to extend the due date of this RFP. "
+            "The new due date for this RFP will be July 9, 2024 at 2:00 PM CST.' "
+            "Vendors are required to sign and return a copy of this addendum with their proposal. "
             "(Source: Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, Page 1)"
         ),
         "sources": [

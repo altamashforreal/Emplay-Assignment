@@ -22,13 +22,13 @@
       "notes": "Extracted from portal HTML"
     },
     "Due Date": {
-      "value": "Listed in Bid Activities on iSupplier portal (updated by Addendum 2)",
-      "confidence": 0.68,
+      "value": "July 9, 2024 at 2:00 PM CST (extended per Addendum 2)",
+      "confidence": 0.99,
       "sources": [
-        {"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 2},
-        {"file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf", "page": 1}
+        {"file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf", "page": 1},
+        {"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 2}
       ],
-      "notes": "Exact date/time is in the portal Bid Activities section; updated per Addendum 2"
+      "notes": "Original RFP referenced portal schedule; Addendum 2 formally extended the deadline to July 9, 2024 at 2:00 PM CST"
     },
     "Pre Bid Meeting": {
       "value": "Pre-proposal meeting scheduled as per Bid Activities on the portal",

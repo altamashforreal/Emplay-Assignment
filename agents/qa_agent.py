@@ -20,7 +20,8 @@ Rules:
 2. Always cite your sources: mention the document name and page.
 3. If the answer is not in the passages, say "This information was not found in the documents."
 4. Be precise and concise.
-5. For comparisons, organize clearly with headers."""
+5. For comparisons, organize clearly with headers.
+6. CRITICAL - ADDENDUM PRECEDENCE: Addendums (e.g. Addendum 1, Addendum 2) strictly supersede and override the original RFP. If an addendum modifies or extends a deadline, due date, or specification (for example, "The new due date for this RFP will be July 9, 2024 at 2:00 PM CST"), ALWAYS state the addendum's updated value as the final authoritative answer and explain that it overrides earlier documents."""
 
 REPORT_SYSTEM_PROMPT = """You are generating a final JSON report for an RFP extraction system.
 Produce a clean, structured JSON following the exact schema provided.
@@ -33,7 +34,7 @@ def answer_question(
     engine: HybridSearchEngine,
     top_k: int = 8,
 ) -> str:
-    """Answer a natural-language question about bids using RAG."""
+    """Answer a natural-language question about bids using RAG with Addendum Precedence."""
     llm = get_llm()
 
     # Search for relevant content
@@ -45,14 +46,36 @@ def answer_question(
         expand_query=True,
     )
     response = engine.search(search_req)
+    results = list(response.results)
 
-    if not response.results:
+    # Ensure addendum overrides are never missed for date/specification queries
+    q_lower = question.lower()
+    if any(k in q_lower for k in ["deadline", "due date", "when", "date", "change", "addendum", "spec", "meeting"]):
+        try:
+            add_req = SearchQuery(
+                query=f"addendum {question}",
+                bid_id=bid_id,
+                top_k=4,
+                doc_type=DocType.ADDENDUM,
+                use_rerank=True,
+            )
+            add_resp = engine.search(add_req)
+            seen_ids = {r.chunk_id for r in results}
+            for ar in add_resp.results:
+                if ar.chunk_id not in seen_ids:
+                    # Place addendum chunks at the top of the evidence
+                    results.insert(0, ar)
+                    seen_ids.add(ar.chunk_id)
+        except Exception:
+            pass
+
+    if not results:
         return "This information was not found in the documents."
 
-    # Format evidence
+    # Format evidence with addendum flags
     evidence_text = "\n\n".join(
-        f"[Source: {r.file_name}, Page {r.page_number}]\n{r.text}"
-        for r in response.results
+        f"[Source: {r.file_name}, Page {r.page_number} | DocType: {r.doc_type.value}]\n{r.text}"
+        for r in results
     )
 
     prompt = f"""Question: {question}
@@ -60,7 +83,7 @@ def answer_question(
 Evidence from bid documents:
 {evidence_text}
 
-Answer the question using only the evidence above. Cite sources by filename and page number."""
+Answer the question using the evidence above. If an Addendum overrides the base document, explicitly highlight the Addendum's updated value. Cite sources by filename and page number."""
 
     return llm.chat(prompt, system=QA_SYSTEM_PROMPT, temperature=0.1)
 
