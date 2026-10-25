@@ -25,7 +25,7 @@ env/
 
 # Data and outputs
 data/bm25_indices/
-output/
+!output/
 logs/
 *.log
 

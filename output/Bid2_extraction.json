@@ -1,0 +1,172 @@
+{
+  "bid_id": "Bid2",
+  "bid_folder": "data/bids/Bid2",
+  "extraction_date": "2026-10-25",
+  "fields": {
+    "Bid Number": {
+      "value": "#E20P4600040 (eMMA Project: BPM044557)",
+      "confidence": 0.98,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+      ],
+      "notes": "Listed under Section 1 General Information"
+    },
+    "Title": {
+      "value": "Dell Laptops w/ Extended Warranty",
+      "confidence": 0.96,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1},
+        {"file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html", "page": 1}
+      ],
+      "notes": "Purchase Order Request for Proposals (PORFP) Hardware Master Contract"
+    },
+    "company_name": {
+      "value": "Maryland Department of Information Technology (DoIT) / State of Maryland",
+      "confidence": 0.90,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+      ],
+      "notes": "Issued under Hardware Master Contract"
+    },
+    "Due Date": {
+      "value": "Refer to eMMA portal solicitation schedule",
+      "confidence": 0.75,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1},
+        {"file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html", "page": 1}
+      ],
+      "notes": "Submissions managed through eMaryland Marketplace Advantage (eMMA)"
+    },
+    "Pre Bid Meeting": {
+      "value": "None specified / Not mandatory",
+      "confidence": 0.85,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+      ],
+      "notes": "No mandatory pre-bid meeting recorded in PORFP Section 1"
+    },
+    "Bid Bond Requirement": {
+      "value": "Not required",
+      "confidence": 0.92,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 2}
+      ],
+      "notes": "Master contract terms govern; no separate bid bond required for this PORFP"
+    },
+    "Term of Bid": {
+      "value": "Fixed Price contract for hardware procurement and extended warranty period",
+      "confidence": 0.88,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+      ],
+      "notes": "PORFP Type: Fixed Price"
+    },
+    "Payment Terms": {
+      "value": "Net 30 days upon delivery, acceptance, and invoice approval",
+      "confidence": 0.82,
+      "sources": [
+        {"file": "Contract_Affidavit.pdf", "page": 2}
+      ],
+      "notes": "Subject to State of Maryland standard procurement terms"
+    },
+    "Delivery Date": {
+      "value": "Within 30 calendar days after receipt of Purchase Order (ARO)",
+      "confidence": 0.78,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 2}
+      ],
+      "notes": "Delivery to designated State facilities"
+    },
+    "Any Additional Documentation Required": {
+      "value": "Contract Affidavit and Mercury Affidavit",
+      "confidence": 0.96,
+      "sources": [
+        {"file": "Contract_Affidavit.pdf", "page": 1},
+        {"file": "Mercury_Affidavit.pdf", "page": 1}
+      ],
+      "notes": "Both affidavits must be executed and returned with proposal"
+    },
+    "Contract or Cooperative to use": {
+      "value": "State of Maryland Hardware Master Contract (BPO / Master Agreement)",
+      "confidence": 0.95,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+      ],
+      "notes": "PORFP issued to Master Contractors only"
+    },
+    "Bid Submission Type": {
+      "value": "Electronic via eMaryland Marketplace Advantage (eMMA)",
+      "confidence": 0.92,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+      ],
+      "notes": "Online electronic submission required"
+    },
+    "Model_no": {
+      "value": "Dell Latitude 5550",
+      "confidence": 0.99,
+      "sources": [
+        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+      ],
+      "notes": "SI# CC7802 Dell Latitude 5550 specified in Dell_Laptop_Specs.pdf"
+    },
+    "Part_no": {
+      "value": "SKUs: 210-BLYZ, 379-BFNZ, 619-ARSB, 658-BCSB, 338-CNRG, 370-BBTL, 400-BRFT",
+      "confidence": 0.97,
+      "sources": [
+        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+      ],
+      "notes": "Comprehensive manufacturer SKU and component list detailed in specs PDF"
+    },
+    "Product": {
+      "value": "Dell Latitude Laptop Computers with Extended Warranty",
+      "confidence": 0.98,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1},
+        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+      ],
+      "notes": "Functional Area: Hardware & Associated Peripherals"
+    },
+    "Product Specification": {
+      "value": "Dell Latitude 5550, Intel Core processor, SSD storage, extended hardware service & warranty",
+      "confidence": 0.95,
+      "sources": [
+        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+      ],
+      "notes": "Line item configuration list with detailed subsystem SKUs"
+    },
+    "MFG for Registration": {
+      "value": "Dell Technologies / Authorized Dell Master Reseller",
+      "confidence": 0.94,
+      "sources": [
+        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+      ],
+      "notes": "Authorized manufacturer channel qualification required"
+    },
+    "Installation": {
+      "value": "Standard unboxing and desktop delivery; configuration as specified by agency",
+      "confidence": 0.70,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 2}
+      ],
+      "notes": "Desktop deployment services under Master Contract"
+    },
+    "contact_info": {
+      "value": "Designated State Procurement Officer as identified in eMMA portal",
+      "confidence": 0.76,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+      ],
+      "notes": "All communications directed via procurement system"
+    },
+    "Bid Summary": {
+      "value": "Procurement of Dell Latitude 5550 laptops with extended warranty under the State Hardware Master Contract, requiring Contract and Mercury Affidavits submitted via eMMA.",
+      "confidence": 0.95,
+      "sources": [
+        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1},
+        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+      ],
+      "notes": "Synthesized from PORFP and specification sheets"
+    }
+  }
+}

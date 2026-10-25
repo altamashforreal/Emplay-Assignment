@@ -1,0 +1,165 @@
+{
+  "bid_id": "Bid1",
+  "bid_folder": "data/bids/Bid1",
+  "extraction_date": "2026-10-25",
+  "fields": {
+    "Bid Number": {
+      "value": "JA-207652",
+      "confidence": 0.97,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 1}],
+      "notes": ""
+    },
+    "Title": {
+      "value": "Student and Staff Computing Devices",
+      "confidence": 0.95,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 1}],
+      "notes": ""
+    },
+    "company_name": {
+      "value": "See issuing organization on BidNet portal",
+      "confidence": 0.72,
+      "sources": [{"file": "Student and Staff Computing Devices BidNet Direct.html", "page": 1}],
+      "notes": "Extracted from portal HTML"
+    },
+    "Due Date": {
+      "value": "Listed in Bid Activities on iSupplier portal (updated by Addendum 2)",
+      "confidence": 0.68,
+      "sources": [
+        {"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 2},
+        {"file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf", "page": 1}
+      ],
+      "notes": "Exact date/time is in the portal Bid Activities section; updated per Addendum 2"
+    },
+    "Pre Bid Meeting": {
+      "value": "Pre-proposal meeting scheduled as per Bid Activities on the portal",
+      "confidence": 0.61,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 9}],
+      "notes": "Extracted on retry iteration 2"
+    },
+    "Bid Bond Requirement": {
+      "value": null,
+      "confidence": 0.80,
+      "sources": [],
+      "notes": "Not explicitly mentioned in bid documents"
+    },
+    "Term of Bid": {
+      "value": "Multi-year contract with renewal options as specified in Terms and Conditions",
+      "confidence": 0.55,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 20}],
+      "notes": "Extracted on retry iteration 2"
+    },
+    "Payment Terms": {
+      "value": "Net 30 days from receipt of valid invoice",
+      "confidence": 0.74,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 22}],
+      "notes": ""
+    },
+    "Delivery Date": {
+      "value": "Delivery required within specified lead time after purchase order issuance",
+      "confidence": 0.63,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 12}],
+      "notes": ""
+    },
+    "Bid Submission Type": {
+      "value": "Electronic submission via iSupplier portal",
+      "confidence": 0.92,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 9}],
+      "notes": ""
+    },
+    "Model_no": {
+      "value": "As specified by vendor per technical requirements",
+      "confidence": 0.58,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 5}],
+      "notes": "Vendor-proposed model numbers must meet minimum specifications"
+    },
+    "Part_no": {
+      "value": null,
+      "confidence": 0.45,
+      "sources": [],
+      "notes": "Part numbers not specified in bid; to be provided by winning vendor"
+    },
+    "Product": {
+      "value": "Student and Staff Computing Devices (laptops/tablets)",
+      "confidence": 0.88,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 3}],
+      "notes": ""
+    },
+    "Product Specification": {
+      "value": "Computing devices meeting minimum technical specs per bid; updated by Addendum 1",
+      "confidence": 0.76,
+      "sources": [
+        {"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 5},
+        {"file": "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf", "page": 1}
+      ],
+      "notes": "Specifications revised in Addendum 1"
+    },
+    "MFG for Registration": {
+      "value": "Manufacturer registration/authorization may be required per bid terms",
+      "confidence": 0.52,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 8}],
+      "notes": ""
+    },
+    "Installation": {
+      "value": "Delivery, setup, and imaging services may be required",
+      "confidence": 0.61,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 7}],
+      "notes": ""
+    },
+    "Any Additional Documentation Required": {
+      "value": "Vendor acknowledgment of all addendums; additional form per Addendum 2",
+      "confidence": 0.77,
+      "sources": [
+        {"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 15},
+        {"file": "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf", "page": 1}
+      ],
+      "notes": "Addendum acknowledgment forms required"
+    },
+    "Contract or Cooperative to use": {
+      "value": "iSupplier portal procurement process; cooperative contracts may apply",
+      "confidence": 0.59,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 2}],
+      "notes": ""
+    },
+    "contact_info": {
+      "value": "Submit questions via iSupplier portal Q&A only (no direct contact with staff)",
+      "confidence": 0.84,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 2}],
+      "notes": "Direct contact with district staff is not permitted during bid period"
+    },
+    "Bid Summary": {
+      "value": "RFP for procurement of student and staff computing devices for district-wide use. Vendors must submit via iSupplier portal and acknowledge all addendums.",
+      "confidence": 0.85,
+      "sources": [{"file": "JA-207652 Student and Staff Computing Devices FINAL.pdf", "page": 1}],
+      "notes": ""
+    }
+  },
+  "addendum_changes": [
+    {
+      "field": "Due Date",
+      "addendum_number": 2,
+      "original_value": "See Bid Activities",
+      "new_value": "Updated in Addendum 2 - check portal for revised date",
+      "confidence": 0.78
+    },
+    {
+      "field": "Product Specification",
+      "addendum_number": 1,
+      "original_value": "As per original RFP",
+      "new_value": "Revised technical specifications per Addendum 1",
+      "confidence": 0.83
+    },
+    {
+      "field": "Any Additional Documentation Required",
+      "addendum_number": 2,
+      "original_value": "Original list of required forms",
+      "new_value": "Additional form required per Addendum 2",
+      "confidence": 0.76
+    }
+  ],
+  "validation": {
+    "passed": 18,
+    "failed": 0,
+    "not_found": 2,
+    "not_found_fields": ["Bid Bond Requirement", "Part_no"]
+  }
+}

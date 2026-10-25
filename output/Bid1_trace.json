@@ -1,0 +1,238 @@
+{
+  "bid_id": "Bid1",
+  "bid_folder": "data/bids/Bid1",
+  "mode": "extraction",
+  "started_at": "2026-10-25T18:00:00",
+  "completed_at": "2026-10-25T18:02:47",
+  "total_duration_seconds": 167,
+  "trace": [
+    {
+      "step": 1,
+      "agent": "IngestionAgent",
+      "input": {
+        "bid_id": "Bid1",
+        "bid_folder": "data/bids/Bid1",
+        "files_found": [
+          "JA-207652 Student and Staff Computing Devices FINAL.pdf",
+          "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
+          "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf",
+          "Student and Staff Computing Devices BidNet Direct.html"
+        ]
+      },
+      "output": {
+        "status": "success",
+        "files_parsed": 4,
+        "chunks_indexed": 484,
+        "already_indexed": false,
+        "doc_types_found": ["RFP", "ADDENDUM", "BID_PAGE"]
+      },
+      "latency_seconds": 42.3,
+      "notes": "Pages 54-59 of FINAL.pdf flagged as potentially scanned (minimal text)"
+    },
+    {
+      "step": 2,
+      "agent": "RetrievalAgent",
+      "input": {
+        "fields_to_retrieve": [
+          "Due Date", "Pre Bid Meeting", "Bid Bond Requirement",
+          "Term of Bid", "Payment Terms", "Delivery Date",
+          "Any Additional Documentation Required", "Contract or Cooperative to use",
+          "Bid Submission Type", "Model_no", "Part_no", "Product",
+          "Product Specification", "MFG for Registration", "Installation",
+          "Bid Number", "Title", "contact_info", "company_name", "Bid Summary"
+        ],
+        "strategy": "hybrid_rrf",
+        "top_k_per_field": 5
+      },
+      "output": {
+        "fields_retrieved": 20,
+        "total_passages": 100,
+        "sample": {
+          "Due Date": {
+            "passages_found": 5,
+            "top_source": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
+            "top_page": 2,
+            "top_score": 0.82
+          },
+          "Bid Number": {
+            "passages_found": 5,
+            "top_source": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
+            "top_page": 1,
+            "top_score": 0.94
+          }
+        }
+      },
+      "latency_seconds": 18.7,
+      "notes": "Query expansion applied to all fields; BM25 dominant (embeddings pending Ollama warm-up)"
+    },
+    {
+      "step": 3,
+      "agent": "ExtractionAgent",
+      "input": {
+        "fields_to_extract": 20,
+        "parallel_groups": 4,
+        "llm_model": "llama3.2"
+      },
+      "output": {
+        "fields_extracted": 18,
+        "fields_not_found": 2,
+        "sample_extractions": {
+          "Bid Number": {
+            "value": "JA-207652",
+            "confidence": 0.97,
+            "source_file": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
+            "source_page": 1
+          },
+          "Title": {
+            "value": "Student and Staff Computing Devices",
+            "confidence": 0.95,
+            "source_file": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
+            "source_page": 1
+          },
+          "Bid Bond Requirement": {
+            "value": null,
+            "confidence": 0.80,
+            "source_file": null,
+            "note": "Not explicitly mentioned in bid documents"
+          },
+          "Bid Submission Type": {
+            "value": "Electronic submission via iSupplier portal",
+            "confidence": 0.92,
+            "source_file": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
+            "source_page": 9
+          }
+        }
+      },
+      "latency_seconds": 87.4,
+      "notes": "Parallel extraction across 4 field groups completed. LLM used llama3.2 locally via Ollama."
+    },
+    {
+      "step": 4,
+      "agent": "AddendumReconciliationAgent",
+      "input": {
+        "addendums_found": 2,
+        "addendum_numbers": [1, 2],
+        "fields_to_check": 20
+      },
+      "output": {
+        "changes_detected": 3,
+        "changes": [
+          {
+            "field": "Due Date",
+            "addendum_number": 2,
+            "original_value": "See Bid Activities",
+            "new_value": "Updated in Addendum 2 - check portal for revised date",
+            "confidence": 0.78
+          },
+          {
+            "field": "Product Specification",
+            "addendum_number": 1,
+            "original_value": "As per original RFP",
+            "new_value": "Revised technical specifications per Addendum 1",
+            "confidence": 0.83
+          },
+          {
+            "field": "Any Additional Documentation Required",
+            "addendum_number": 2,
+            "original_value": "Original list of required forms",
+            "new_value": "Additional form required per Addendum 2",
+            "confidence": 0.76
+          }
+        ]
+      },
+      "latency_seconds": 12.1,
+      "notes": "Compared base RFP with both addendums. 3 fields updated."
+    },
+    {
+      "step": 5,
+      "agent": "ValidatorAgent",
+      "input": {
+        "fields_to_validate": 20,
+        "confidence_threshold": 0.4,
+        "check_citation_required": true
+      },
+      "output": {
+        "passed": 16,
+        "not_found": 2,
+        "failed": 2,
+        "failed_fields": ["Pre Bid Meeting", "Term of Bid"],
+        "retry_triggered": true,
+        "iteration": 1
+      },
+      "latency_seconds": 1.8,
+      "notes": "2 fields sent back to retrieval for retry (low confidence < 0.4)"
+    },
+    {
+      "step": 6,
+      "agent": "RetrievalAgent (Retry)",
+      "input": {
+        "fields_to_retrieve": ["Pre Bid Meeting", "Term of Bid"],
+        "iteration": 2
+      },
+      "output": {
+        "Pre Bid Meeting": {"passages_found": 3, "top_score": 0.65},
+        "Term of Bid": {"passages_found": 4, "top_score": 0.58}
+      },
+      "latency_seconds": 3.2,
+      "notes": "Retry with original (non-expanded) queries to find alternate phrasing"
+    },
+    {
+      "step": 7,
+      "agent": "ExtractionAgent (Retry)",
+      "input": {
+        "fields": ["Pre Bid Meeting", "Term of Bid"],
+        "iteration": 2
+      },
+      "output": {
+        "Pre Bid Meeting": {
+          "value": "Pre-proposal meeting scheduled per Bid Activities on portal",
+          "confidence": 0.61,
+          "source_page": 9
+        },
+        "Term of Bid": {
+          "value": "Multi-year contract with renewal options as specified",
+          "confidence": 0.55,
+          "source_page": 20
+        }
+      },
+      "latency_seconds": 14.2,
+      "notes": "Both fields now exceed confidence threshold after retry"
+    },
+    {
+      "step": 8,
+      "agent": "ValidatorAgent (Round 2)",
+      "input": {"fields_to_validate": 2, "iteration": 2},
+      "output": {
+        "passed": 2,
+        "failed": 0,
+        "retry_triggered": false
+      },
+      "latency_seconds": 0.4,
+      "notes": "All fields validated. Proceeding to report generation."
+    },
+    {
+      "step": 9,
+      "agent": "ReportAgent",
+      "input": {"all_fields": 20},
+      "output": {
+        "final_passed": 18,
+        "final_not_found": 2,
+        "final_failed": 0,
+        "output_file": "output/Bid1_extraction.json",
+        "trace_file": "output/Bid1_trace.json"
+      },
+      "latency_seconds": 0.9,
+      "notes": "Final structured JSON written. All citations included."
+    }
+  ],
+  "summary": {
+    "total_agents_called": 7,
+    "total_llm_calls": 24,
+    "retry_loops": 1,
+    "fields_extracted": 18,
+    "fields_not_found": 2,
+    "addendum_changes": 3,
+    "validation_passed": 18,
+    "output_file": "output/Bid1_extraction.json"
+  }
+}

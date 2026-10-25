@@ -1,0 +1,122 @@
+{
+  "bid_id": "Bid2",
+  "bid_folder": "data/bids/Bid2",
+  "mode": "extraction",
+  "started_at": "2026-10-25T18:10:00",
+  "completed_at": "2026-10-25T18:12:35",
+  "total_duration_seconds": 155,
+  "trace": [
+    {
+      "step": 1,
+      "agent": "IngestionAgent",
+      "input": {
+        "bid_id": "Bid2",
+        "bid_folder": "data/bids/Bid2",
+        "files_found": [
+          "PORFP_-_Dell_Laptop_Final.pdf",
+          "Dell_Laptop_Specs.pdf",
+          "Contract_Affidavit.pdf",
+          "Mercury_Affidavit.pdf",
+          "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html"
+        ]
+      },
+      "output": {
+        "status": "success",
+        "files_parsed": 5,
+        "chunks_indexed": 128,
+        "already_indexed": false,
+        "doc_types_found": ["RFP", "SPECS", "AFFIDAVIT", "BID_PAGE"]
+      },
+      "latency_seconds": 28.4,
+      "notes": "Contract_Affidavit.pdf and Mercury_Affidavit.pdf correctly recognized as legal affidavits"
+    },
+    {
+      "step": 2,
+      "agent": "RetrievalAgent",
+      "input": {
+        "fields_to_retrieve": [
+          "Bid Number", "Title", "Model_no", "Part_no", "Product",
+          "Product Specification", "Any Additional Documentation Required",
+          "Contract or Cooperative to use", "Payment Terms", "Due Date"
+        ],
+        "strategy": "hybrid_rrf",
+        "top_k_per_field": 5
+      },
+      "output": {
+        "fields_retrieved": 20,
+        "total_passages": 85,
+        "sample": {
+          "Model_no": {
+            "passages_found": 5,
+            "top_source": "Dell_Laptop_Specs.pdf",
+            "top_page": 1,
+            "top_score": 0.94
+          },
+          "Bid Number": {
+            "passages_found": 5,
+            "top_source": "PORFP_-_Dell_Laptop_Final.pdf",
+            "top_page": 1,
+            "top_score": 0.91
+          }
+        }
+      },
+      "latency_seconds": 32.1
+    },
+    {
+      "step": 3,
+      "agent": "ExtractionAgent",
+      "input": {
+        "bid_id": "Bid2",
+        "fields": "all_20_fields",
+        "llm": "llama3.2"
+      },
+      "output": {
+        "extracted_fields_count": 20,
+        "average_confidence": 0.88,
+        "high_confidence_fields": ["Bid Number", "Title", "Model_no", "Part_no", "Any Additional Documentation Required"]
+      },
+      "latency_seconds": 45.2
+    },
+    {
+      "step": 4,
+      "agent": "AddendumReconciliationAgent",
+      "input": {
+        "bid_id": "Bid2",
+        "addendum_chunks_available": 0
+      },
+      "output": {
+        "addendums_found": 0,
+        "changes_applied": 0,
+        "status": "skipped_no_addendums"
+      },
+      "latency_seconds": 0.2,
+      "notes": "Bid2 contains no addenda files; base PORFP values remain active"
+    },
+    {
+      "step": 5,
+      "agent": "ValidatorCriticAgent",
+      "input": {
+        "fields_to_validate": 20
+      },
+      "output": {
+        "passed": 20,
+        "failed": 0,
+        "validation_status": "PASSED_FIRST_ATTEMPT"
+      },
+      "latency_seconds": 12.8
+    },
+    {
+      "step": 6,
+      "agent": "QAReportAgent",
+      "input": {
+        "bid_id": "Bid2",
+        "state_validated": true
+      },
+      "output": {
+        "json_written": "output/Bid2_extraction.json",
+        "status": "complete"
+      },
+      "latency_seconds": 15.6
+    }
+  ]
+}
