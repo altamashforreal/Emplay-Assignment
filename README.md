@@ -5,9 +5,15 @@
 
 ---
 
+## 🎬 System Walkthrough & Demo Video
+📺 **[Watch the Live System Demo & Walkthrough (Google Drive)](https://drive.google.com/file/d/1xszMSy_67kkY-JLspTxWJRhFQMdYek9o/view?usp=sharing)**
+
+---
+
 ## 📋 Table of Contents
-1. [Architecture](#architecture)
-2. [Quick Start](#quick-start)
+1. [Demo Video](#-system-walkthrough--demo-video)
+2. [Architecture](#architecture)
+3. [Quick Start](#quick-start)
 3. [Setup](#setup)
 4. [Usage](#usage)
 5. [Design Decisions](#design-decisions)
