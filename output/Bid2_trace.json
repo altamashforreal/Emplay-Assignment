@@ -1,122 +1,211 @@
-{
-  "bid_id": "Bid2",
-  "bid_folder": "data/bids/Bid2",
-  "mode": "extraction",
-  "started_at": "2026-10-25T18:10:00",
-  "completed_at": "2026-10-25T18:12:35",
-  "total_duration_seconds": 155,
-  "trace": [
-    {
-      "step": 1,
-      "agent": "IngestionAgent",
-      "input": {
-        "bid_id": "Bid2",
-        "bid_folder": "data/bids/Bid2",
-        "files_found": [
-          "PORFP_-_Dell_Laptop_Final.pdf",
-          "Dell_Laptop_Specs.pdf",
-          "Contract_Affidavit.pdf",
-          "Mercury_Affidavit.pdf",
-          "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html"
-        ]
-      },
-      "output": {
-        "status": "success",
-        "files_parsed": 5,
-        "chunks_indexed": 128,
-        "already_indexed": false,
-        "doc_types_found": ["RFP", "SPECS", "AFFIDAVIT", "BID_PAGE"]
-      },
-      "latency_seconds": 28.4,
-      "notes": "Contract_Affidavit.pdf and Mercury_Affidavit.pdf correctly recognized as legal affidavits"
+[
+  {
+    "agent": "IngestionAgent",
+    "input": {
+      "bid_id": "Bid2",
+      "bid_folder": "C:\\Users\\Altamash\\Emplay-Assignment\\data\\bids\\Bid2"
     },
-    {
-      "step": 2,
-      "agent": "RetrievalAgent",
-      "input": {
-        "fields_to_retrieve": [
-          "Bid Number", "Title", "Model_no", "Part_no", "Product",
-          "Product Specification", "Any Additional Documentation Required",
-          "Contract or Cooperative to use", "Payment Terms", "Due Date"
-        ],
-        "strategy": "hybrid_rrf",
-        "top_k_per_field": 5
-      },
-      "output": {
-        "fields_retrieved": 20,
-        "total_passages": 85,
-        "sample": {
-          "Model_no": {
-            "passages_found": 5,
-            "top_source": "Dell_Laptop_Specs.pdf",
-            "top_page": 1,
-            "top_score": 0.94
-          },
-          "Bid Number": {
-            "passages_found": 5,
-            "top_source": "PORFP_-_Dell_Laptop_Final.pdf",
-            "top_page": 1,
-            "top_score": 0.91
-          }
-        }
-      },
-      "latency_seconds": 32.1
+    "start_time": 1792985639.2049484,
+    "output": {
+      "bid_id": "Bid2",
+      "status": "already_indexed",
+      "chunks": 0,
+      "errors": []
     },
-    {
-      "step": 3,
-      "agent": "ExtractionAgent",
-      "input": {
-        "bid_id": "Bid2",
-        "fields": "all_20_fields",
-        "llm": "llama3.2"
-      },
-      "output": {
-        "extracted_fields_count": 20,
-        "average_confidence": 0.88,
-        "high_confidence_fields": ["Bid Number", "Title", "Model_no", "Part_no", "Any Additional Documentation Required"]
-      },
-      "latency_seconds": 45.2
+    "latency": 0.037476301193237305,
+    "status": "success"
+  },
+  {
+    "agent": "RetrievalAgent",
+    "input": {
+      "bid_id": "Bid2",
+      "fields": null
     },
-    {
-      "step": 4,
-      "agent": "AddendumReconciliationAgent",
-      "input": {
-        "bid_id": "Bid2",
-        "addendum_chunks_available": 0
-      },
-      "output": {
-        "addendums_found": 0,
-        "changes_applied": 0,
-        "status": "skipped_no_addendums"
-      },
-      "latency_seconds": 0.2,
-      "notes": "Bid2 contains no addenda files; base PORFP values remain active"
+    "start_time": 1792985639.2451525,
+    "output": {
+      "Due Date": 5,
+      "Pre Bid Meeting": 5,
+      "Delivery Date": 5,
+      "Term of Bid": 5,
+      "Bid Bond Requirement": 5,
+      "Payment Terms": 5,
+      "Any Additional Documentation Required": 5,
+      "Contract or Cooperative to use": 5,
+      "Bid Submission Type": 5,
+      "Model_no": 5,
+      "Part_no": 5,
+      "Product": 5,
+      "Product Specification": 5,
+      "MFG for Registration": 5,
+      "Installation": 5,
+      "Bid Number": 5,
+      "Title": 5,
+      "contact_info": 5,
+      "company_name": 5,
+      "Bid Summary": 5
     },
-    {
-      "step": 5,
-      "agent": "ValidatorCriticAgent",
-      "input": {
-        "fields_to_validate": 20
-      },
-      "output": {
-        "passed": 20,
-        "failed": 0,
-        "validation_status": "PASSED_FIRST_ATTEMPT"
-      },
-      "latency_seconds": 12.8
+    "latency": 16.253921508789062,
+    "status": "success"
+  },
+  {
+    "agent": "ExtractionAgent",
+    "input": {
+      "bid_id": "Bid2",
+      "fields": null
     },
-    {
-      "step": 6,
-      "agent": "QAReportAgent",
-      "input": {
-        "bid_id": "Bid2",
-        "state_validated": true
-      },
-      "output": {
-        "json_written": "output/Bid2_extraction.json",
-        "status": "complete"
-      },
-      "latency_seconds": 15.6
-    }
-  ]
-}
+    "start_time": 1792985655.50424,
+    "output": {
+      "Due Date": "06/01/2024 at 2:00 PM EDT",
+      "Delivery Date": "3 years following the date of delivery",
+      "Pre Bid Meeting": "06/01/2024 at 2:00 PM EDT",
+      "Term of Bid": "24 months prior to when a contract was awarded; and (b) if the contribution is made after the execution of a contract, then twice a year, throughout the contract term, on or before: (i) May 31, to cover the six (6) month period ending April 30; and (ii) November 30, to cover the six (6) month period ending October 31.",
+      "Bid Bond Requirement": "Not required",
+      "Payment Terms": "Net 30",
+      "Any Additional Documentation Required": "Required affidavits, forms, certificates, insurance, W-9, etc.",
+      "Contract or Cooperative to use": "Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007",
+      "Bid Submission Type": "electronic portal",
+      "Model_no": "MTL 65WADPT",
+      "Part_no": null,
+      "Product": "Dell Laptop",
+      "Product Specification": "CPU: Intel Core i7, RAM: 16GB, Storage: 512GB SSD, Display: 15.6\" Full HD, Warranty: 3 years, Extended Warranty: 3 years, Thunderbolt 4 Dock: WD22TB4",
+      "MFG for Registration": "Dell",
+      "Installation": null,
+      "Bid Number": "E20P4600040",
+      "Title": "Dell Laptops w/Extended Warranty",
+      "contact_info": "thawkins@treasurer.state.md.us",
+      "company_name": "State Treasurer's Office/ Information Technology",
+      "Bid Summary": "Master Contractors that are awarded a contract under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007, are eligible to submit a bid in response to this secondary competition Purchase Order Request for Proposal (PORFP). SMALL BUSINESS RESERVE (SBR) PROCUREMENT This is a Small Business Reserve Procurement for which award will be limited to certified small business vendors. Only businesses that meet the statutory requirements set forth in State Finance and Procurement Article, \u00a7\u00a714-501\u201414-505,"
+    },
+    "latency": 323.025949716568,
+    "status": "success"
+  },
+  {
+    "agent": "AddendumReconciliationAgent",
+    "input": {
+      "bid_id": "Bid2"
+    },
+    "start_time": 1792985978.5344098,
+    "output": "no_addendums",
+    "latency": 3.0035250186920166,
+    "status": "success"
+  },
+  {
+    "agent": "ValidatorAgent",
+    "input": {
+      "fields_to_validate": 20
+    },
+    "start_time": 1792985981.5406067,
+    "output": {
+      "passed": 18,
+      "failed": 2,
+      "not_found": 0
+    },
+    "latency": 0.0033257007598876953,
+    "status": "success"
+  },
+  {
+    "agent": "RetrievalAgent",
+    "input": {
+      "bid_id": "Bid2",
+      "fields": [
+        "Delivery Date",
+        "Bid Bond Requirement"
+      ]
+    },
+    "start_time": 1792985981.5499806,
+    "output": {
+      "Due Date": 5,
+      "Pre Bid Meeting": 5,
+      "Delivery Date": 5,
+      "Term of Bid": 5,
+      "Bid Bond Requirement": 5,
+      "Payment Terms": 5,
+      "Any Additional Documentation Required": 5,
+      "Contract or Cooperative to use": 5,
+      "Bid Submission Type": 5,
+      "Model_no": 5,
+      "Part_no": 5,
+      "Product": 5,
+      "Product Specification": 5,
+      "MFG for Registration": 5,
+      "Installation": 5,
+      "Bid Number": 5,
+      "Title": 5,
+      "contact_info": 5,
+      "company_name": 5,
+      "Bid Summary": 5
+    },
+    "latency": 1.2176523208618164,
+    "status": "success"
+  },
+  {
+    "agent": "ExtractionAgent",
+    "input": {
+      "bid_id": "Bid2",
+      "fields": [
+        "Delivery Date",
+        "Bid Bond Requirement"
+      ]
+    },
+    "start_time": 1792985982.7703528,
+    "output": {
+      "Due Date": "06/01/2024 at 2:00 PM EDT",
+      "Delivery Date": "3 years following the date of delivery",
+      "Pre Bid Meeting": "06/01/2024 at 2:00 PM EDT",
+      "Term of Bid": "24 months prior to when a contract was awarded; and (b) if the contribution is made after the execution of a contract, then twice a year, throughout the contract term, on or before: (i) May 31, to cover the six (6) month period ending April 30; and (ii) November 30, to cover the six (6) month period ending October 31.",
+      "Bid Bond Requirement": "Not required",
+      "Payment Terms": "Net 30",
+      "Any Additional Documentation Required": "Required affidavits, forms, certificates, insurance, W-9, etc.",
+      "Contract or Cooperative to use": "Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007",
+      "Bid Submission Type": "electronic portal",
+      "Model_no": "MTL 65WADPT",
+      "Part_no": null,
+      "Product": "Dell Laptop",
+      "Product Specification": "CPU: Intel Core i7, RAM: 16GB, Storage: 512GB SSD, Display: 15.6\" Full HD, Warranty: 3 years, Extended Warranty: 3 years, Thunderbolt 4 Dock: WD22TB4",
+      "MFG for Registration": "Dell",
+      "Installation": null,
+      "Bid Number": "E20P4600040",
+      "Title": "Dell Laptops w/Extended Warranty",
+      "contact_info": "thawkins@treasurer.state.md.us",
+      "company_name": "State Treasurer's Office/ Information Technology",
+      "Bid Summary": "Master Contractors that are awarded a contract under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007, are eligible to submit a bid in response to this secondary competition Purchase Order Request for Proposal (PORFP). SMALL BUSINESS RESERVE (SBR) PROCUREMENT This is a Small Business Reserve Procurement for which award will be limited to certified small business vendors. Only businesses that meet the statutory requirements set forth in State Finance and Procurement Article, \u00a7\u00a714-501\u201414-505,"
+    },
+    "latency": 6.115786552429199,
+    "status": "success"
+  },
+  {
+    "agent": "AddendumReconciliationAgent",
+    "input": {
+      "bid_id": "Bid2"
+    },
+    "start_time": 1792985988.8899066,
+    "output": "no_addendums",
+    "latency": 2.1498186588287354,
+    "status": "success"
+  },
+  {
+    "agent": "ValidatorAgent",
+    "input": {
+      "fields_to_validate": 20
+    },
+    "start_time": 1792985991.042402,
+    "output": {
+      "passed": 18,
+      "failed": 0,
+      "not_found": 0
+    },
+    "latency": 0.0026776790618896484,
+    "status": "success"
+  },
+  {
+    "agent": "QAReportAgent",
+    "input": {
+      "mode": "extraction",
+      "bid_id": "Bid2"
+    },
+    "start_time": 1792985991.0488124,
+    "output": "20 fields extracted",
+    "latency": 0.0005257129669189453,
+    "status": "success"
+  }
+]

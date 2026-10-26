@@ -1,238 +1,245 @@
-{
-  "bid_id": "Bid1",
-  "bid_folder": "data/bids/Bid1",
-  "mode": "extraction",
-  "started_at": "2026-10-25T18:00:00",
-  "completed_at": "2026-10-25T18:02:47",
-  "total_duration_seconds": 167,
-  "trace": [
-    {
-      "step": 1,
-      "agent": "IngestionAgent",
-      "input": {
-        "bid_id": "Bid1",
-        "bid_folder": "data/bids/Bid1",
-        "files_found": [
-          "JA-207652 Student and Staff Computing Devices FINAL.pdf",
-          "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf",
-          "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf",
-          "Student and Staff Computing Devices BidNet Direct.html"
-        ]
-      },
-      "output": {
-        "status": "success",
-        "files_parsed": 4,
-        "chunks_indexed": 484,
-        "already_indexed": false,
-        "doc_types_found": ["RFP", "ADDENDUM", "BID_PAGE"]
-      },
-      "latency_seconds": 42.3,
-      "notes": "Pages 54-59 of FINAL.pdf flagged as potentially scanned (minimal text)"
+[
+  {
+    "agent": "IngestionAgent",
+    "input": {
+      "bid_id": "Bid1",
+      "bid_folder": "C:\\Users\\Altamash\\Emplay-Assignment\\data\\bids\\Bid1"
     },
-    {
-      "step": 2,
-      "agent": "RetrievalAgent",
-      "input": {
-        "fields_to_retrieve": [
-          "Due Date", "Pre Bid Meeting", "Bid Bond Requirement",
-          "Term of Bid", "Payment Terms", "Delivery Date",
-          "Any Additional Documentation Required", "Contract or Cooperative to use",
-          "Bid Submission Type", "Model_no", "Part_no", "Product",
-          "Product Specification", "MFG for Registration", "Installation",
-          "Bid Number", "Title", "contact_info", "company_name", "Bid Summary"
-        ],
-        "strategy": "hybrid_rrf",
-        "top_k_per_field": 5
-      },
-      "output": {
-        "fields_retrieved": 20,
-        "total_passages": 100,
-        "sample": {
-          "Due Date": {
-            "passages_found": 5,
-            "top_source": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
-            "top_page": 2,
-            "top_score": 0.82
-          },
-          "Bid Number": {
-            "passages_found": 5,
-            "top_source": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
-            "top_page": 1,
-            "top_score": 0.94
-          }
-        }
-      },
-      "latency_seconds": 18.7,
-      "notes": "Query expansion applied to all fields; BM25 dominant (embeddings pending Ollama warm-up)"
+    "start_time": 1792986283.986899,
+    "output": {
+      "bid_id": "Bid1",
+      "status": "already_indexed",
+      "chunks": 0,
+      "errors": []
     },
-    {
-      "step": 3,
-      "agent": "ExtractionAgent",
-      "input": {
-        "fields_to_extract": 20,
-        "parallel_groups": 4,
-        "llm_model": "llama3.2"
-      },
-      "output": {
-        "fields_extracted": 18,
-        "fields_not_found": 2,
-        "sample_extractions": {
-          "Bid Number": {
-            "value": "JA-207652",
-            "confidence": 0.97,
-            "source_file": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
-            "source_page": 1
-          },
-          "Title": {
-            "value": "Student and Staff Computing Devices",
-            "confidence": 0.95,
-            "source_file": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
-            "source_page": 1
-          },
-          "Bid Bond Requirement": {
-            "value": null,
-            "confidence": 0.80,
-            "source_file": null,
-            "note": "Not explicitly mentioned in bid documents"
-          },
-          "Bid Submission Type": {
-            "value": "Electronic submission via iSupplier portal",
-            "confidence": 0.92,
-            "source_file": "JA-207652 Student and Staff Computing Devices FINAL.pdf",
-            "source_page": 9
-          }
-        }
-      },
-      "latency_seconds": 87.4,
-      "notes": "Parallel extraction across 4 field groups completed. LLM used llama3.2 locally via Ollama."
+    "latency": 0.015098094940185547,
+    "status": "success"
+  },
+  {
+    "agent": "RetrievalAgent",
+    "input": {
+      "bid_id": "Bid1",
+      "fields": null
     },
-    {
-      "step": 4,
-      "agent": "AddendumReconciliationAgent",
-      "input": {
-        "addendums_found": 2,
-        "addendum_numbers": [1, 2],
-        "fields_to_check": 20
-      },
-      "output": {
-        "changes_detected": 3,
-        "changes": [
-          {
-            "field": "Due Date",
-            "addendum_number": 2,
-            "original_value": "See Bid Activities",
-            "new_value": "Updated in Addendum 2 - check portal for revised date",
-            "confidence": 0.78
-          },
-          {
-            "field": "Product Specification",
-            "addendum_number": 1,
-            "original_value": "As per original RFP",
-            "new_value": "Revised technical specifications per Addendum 1",
-            "confidence": 0.83
-          },
-          {
-            "field": "Any Additional Documentation Required",
-            "addendum_number": 2,
-            "original_value": "Original list of required forms",
-            "new_value": "Additional form required per Addendum 2",
-            "confidence": 0.76
-          }
-        ]
-      },
-      "latency_seconds": 12.1,
-      "notes": "Compared base RFP with both addendums. 3 fields updated."
+    "start_time": 1792986284.0032973,
+    "output": {
+      "Due Date": 5,
+      "Pre Bid Meeting": 5,
+      "Delivery Date": 5,
+      "Term of Bid": 5,
+      "Bid Bond Requirement": 5,
+      "Payment Terms": 5,
+      "Any Additional Documentation Required": 5,
+      "Contract or Cooperative to use": 5,
+      "Bid Submission Type": 5,
+      "Model_no": 5,
+      "Part_no": 5,
+      "Product": 5,
+      "Product Specification": 5,
+      "MFG for Registration": 5,
+      "Installation": 5,
+      "Bid Number": 5,
+      "Title": 5,
+      "contact_info": 5,
+      "company_name": 5,
+      "Bid Summary": 5
     },
-    {
-      "step": 5,
-      "agent": "ValidatorAgent",
-      "input": {
-        "fields_to_validate": 20,
-        "confidence_threshold": 0.4,
-        "check_citation_required": true
-      },
-      "output": {
-        "passed": 16,
-        "not_found": 2,
-        "failed": 2,
-        "failed_fields": ["Pre Bid Meeting", "Term of Bid"],
-        "retry_triggered": true,
-        "iteration": 1
-      },
-      "latency_seconds": 1.8,
-      "notes": "2 fields sent back to retrieval for retry (low confidence < 0.4)"
+    "latency": 15.229970693588257,
+    "status": "success"
+  },
+  {
+    "agent": "ExtractionAgent",
+    "input": {
+      "bid_id": "Bid1",
+      "fields": null
     },
-    {
-      "step": 6,
-      "agent": "RetrievalAgent (Retry)",
-      "input": {
-        "fields_to_retrieve": ["Pre Bid Meeting", "Term of Bid"],
-        "iteration": 2
+    "start_time": 1792986299.2352548,
+    "output": {
+      "Due Date": "July 9, 2024 at 2:00 PM CST",
+      "Term of Bid": "3 years(s) with option for renewal for up to 5 years(s)",
+      "Delivery Date": null,
+      "Pre Bid Meeting": "10-JUN-2024 14:00:00",
+      "Bid Bond Requirement": "Not required",
+      "Payment Terms": "Net 30",
+      "Any Additional Documentation Required": "Required affidavits, forms, certificates, insurance, W-9, etc.",
+      "Contract or Cooperative to use": "CENTRAL TEXAS PURCHASING ALLIANCE (CTPA)",
+      "Bid Submission Type": "electronic portal, manual submission, paper via mail/FedEx/UPS, online via iSupplier portal",
+      "Model_no": null,
+      "Part_no": null,
+      "Product": "Student Chromebook Laptop (Touch), Student Chromebook Laptop (Non-Touch), Windows Laptop, Student Tablet, Tier 1 Small Student Chromebook Laptop, Tier 2 Large Student Chromebook Laptop, Tier 3 Student Windows Laptop, Student Tablet, Tier 1 Staff Laptop, Tier 2 Staff Laptop, Tier 1 Staff Basic Desktop, Tier 2 Staff Professional Desktop, Display Monitor - Touch, Display Monitor - Non-Touch",
+      "Product Specification": {
+        "CPU": "Intel i5, 14th Gen or equivalent; Intel i7, 14th Gen or equivalent",
+        "RAM": "Minimum 16GB DDR5 RAM; Minimum 32GB DDR5 RAM",
+        "Storage": "512 GB NVMe SSD; 1 TB NVMe SSD",
+        "Display": "Minimum 13\" diagonal screen; Minimum 24\" diagonal screen; Minimum 13\" diagonal screen; Minimum 11.6\" diagonal; Minimum 14\" diagonal Non-Touch",
+        "Warranty": "3-year minimum",
+        "Wireless": "802.11AX WiFi-6E and Bluetooth 5.1",
+        "Power Supply": "USB Type C, 65W",
+        "Battery Life": "Minimum 10 hours",
+        "Ports": "Minimum 1 USB 3.0;1 USB-C, 1 HDMI; 1 headphone/microphone combo",
+        "Operating System": "0/S Windows 11 or Mac OS",
+        "Processor": "Intel i5 Processor, 14th Gen or equivalent; Intel i7 Processor, 14th Gen or equivalent; Intel Celeron Processor N100 or equivalent"
       },
-      "output": {
-        "Pre Bid Meeting": {"passages_found": 3, "top_score": 0.65},
-        "Term of Bid": {"passages_found": 4, "top_score": 0.58}
+      "MFG for Registration": "Manufacturer(s) the bidder must be registered/authorized with",
+      "Installation": "Yes",
+      "Bid Number": "JA-207652",
+      "Title": "Student and Staff Computing Devices",
+      "contact_info": {
+        "name": null,
+        "email": "Primary Supplier Contact",
+        "phone": "Office Phone Mobile Phone"
       },
-      "latency_seconds": 3.2,
-      "notes": "Retry with original (non-expanded) queries to find alternate phrasing"
+      "company_name": "Dallas ISD",
+      "Bid Summary": "Dallas ISD seeks to procure student and staff computing devices, including laptops, desktops, tablet devices, and display monitors, through this Request for Proposal (RFP). Vendors must have the ability to provide significant quantities of devices as requested in the pricing lines. The District reserves the right to award contracts to a single vendor or multiple vendors. Awarded vendors must provide computing devices that meet current industry standard specifications and include deployment services, white glove services, and warranty and warranty repair work."
     },
-    {
-      "step": 7,
-      "agent": "ExtractionAgent (Retry)",
-      "input": {
-        "fields": ["Pre Bid Meeting", "Term of Bid"],
-        "iteration": 2
-      },
-      "output": {
-        "Pre Bid Meeting": {
-          "value": "Pre-proposal meeting scheduled per Bid Activities on portal",
-          "confidence": 0.61,
-          "source_page": 9
-        },
-        "Term of Bid": {
-          "value": "Multi-year contract with renewal options as specified",
-          "confidence": 0.55,
-          "source_page": 20
-        }
-      },
-      "latency_seconds": 14.2,
-      "notes": "Both fields now exceed confidence threshold after retry"
+    "latency": 402.76716685295105,
+    "status": "success"
+  },
+  {
+    "agent": "AddendumReconciliationAgent",
+    "input": {
+      "bid_id": "Bid1"
     },
-    {
-      "step": 8,
-      "agent": "ValidatorAgent (Round 2)",
-      "input": {"fields_to_validate": 2, "iteration": 2},
-      "output": {
-        "passed": 2,
-        "failed": 0,
-        "retry_triggered": false
-      },
-      "latency_seconds": 0.4,
-      "notes": "All fields validated. Proceeding to report generation."
+    "start_time": 1792986702.0067408,
+    "output": {
+      "changes": 5
     },
-    {
-      "step": 9,
-      "agent": "ReportAgent",
-      "input": {"all_fields": 20},
-      "output": {
-        "final_passed": 18,
-        "final_not_found": 2,
-        "final_failed": 0,
-        "output_file": "output/Bid1_extraction.json",
-        "trace_file": "output/Bid1_trace.json"
+    "latency": 89.15619349479675,
+    "status": "success"
+  },
+  {
+    "agent": "ValidatorAgent",
+    "input": {
+      "fields_to_validate": 20
+    },
+    "start_time": 1792986791.1665149,
+    "output": {
+      "passed": 17,
+      "failed": 3,
+      "not_found": 0
+    },
+    "latency": 0.0015790462493896484,
+    "status": "success"
+  },
+  {
+    "agent": "RetrievalAgent",
+    "input": {
+      "bid_id": "Bid1",
+      "fields": [
+        "Bid Bond Requirement",
+        "MFG for Registration",
+        "contact_info"
+      ]
+    },
+    "start_time": 1792986791.1737127,
+    "output": {
+      "Due Date": 5,
+      "Pre Bid Meeting": 5,
+      "Delivery Date": 5,
+      "Term of Bid": 5,
+      "Bid Bond Requirement": 5,
+      "Payment Terms": 5,
+      "Any Additional Documentation Required": 5,
+      "Contract or Cooperative to use": 5,
+      "Bid Submission Type": 5,
+      "Model_no": 5,
+      "Part_no": 5,
+      "Product": 5,
+      "Product Specification": 5,
+      "MFG for Registration": 5,
+      "Installation": 5,
+      "Bid Number": 5,
+      "Title": 5,
+      "contact_info": 5,
+      "company_name": 5,
+      "Bid Summary": 5
+    },
+    "latency": 5.0402936935424805,
+    "status": "success"
+  },
+  {
+    "agent": "ExtractionAgent",
+    "input": {
+      "bid_id": "Bid1",
+      "fields": [
+        "Bid Bond Requirement",
+        "MFG for Registration",
+        "contact_info"
+      ]
+    },
+    "start_time": 1792986796.2172902,
+    "output": {
+      "Due Date": "July 9, 2024 at 2:00 PM CST",
+      "Term of Bid": "3 years(s) with option for renewal for up to 5 years(s)",
+      "Delivery Date": null,
+      "Pre Bid Meeting": "10-JUN-2024 14:00:00",
+      "Bid Bond Requirement": "Not required",
+      "Payment Terms": "Net 30",
+      "Any Additional Documentation Required": "Required affidavits, forms, certificates, insurance, W-9, etc.",
+      "Contract or Cooperative to use": "CENTRAL TEXAS PURCHASING ALLIANCE (CTPA)",
+      "Bid Submission Type": "electronic portal, manual submission, paper via mail/FedEx/UPS, online via iSupplier portal",
+      "Model_no": null,
+      "Part_no": null,
+      "Product": "Student Chromebook Laptop (Touch), Student Chromebook Laptop (Non-Touch), Windows Laptop, Student Tablet, Tier 1 Small Student Chromebook Laptop, Tier 2 Large Student Chromebook Laptop, Tier 3 Student Windows Laptop, Student Tablet, Tier 1 Staff Laptop, Tier 2 Staff Laptop, Tier 1 Staff Basic Desktop, Tier 2 Staff Professional Desktop, Display Monitor - Touch, Display Monitor - Non-Touch",
+      "Product Specification": {
+        "CPU": "Intel i5, 14th Gen or equivalent; Intel i7, 14th Gen or equivalent",
+        "RAM": "Minimum 16GB DDR5 RAM; Minimum 32GB DDR5 RAM",
+        "Storage": "512 GB NVMe SSD; 1 TB NVMe SSD",
+        "Display": "Minimum 13\" diagonal screen; Minimum 24\" diagonal screen; Minimum 13\" diagonal screen; Minimum 11.6\" diagonal; Minimum 14\" diagonal Non-Touch",
+        "Warranty": "3-year minimum",
+        "Wireless": "802.11AX WiFi-6E and Bluetooth 5.1",
+        "Power Supply": "USB Type C, 65W",
+        "Battery Life": "Minimum 10 hours",
+        "Ports": "Minimum 1 USB 3.0;1 USB-C, 1 HDMI; 1 headphone/microphone combo",
+        "Operating System": "0/S Windows 11 or Mac OS",
+        "Processor": "Intel i5 Processor, 14th Gen or equivalent; Intel i7 Processor, 14th Gen or equivalent; Intel Celeron Processor N100 or equivalent"
       },
-      "latency_seconds": 0.9,
-      "notes": "Final structured JSON written. All citations included."
-    }
-  ],
-  "summary": {
-    "total_agents_called": 7,
-    "total_llm_calls": 24,
-    "retry_loops": 1,
-    "fields_extracted": 18,
-    "fields_not_found": 2,
-    "addendum_changes": 3,
-    "validation_passed": 18,
-    "output_file": "output/Bid1_extraction.json"
+      "MFG for Registration": "Manufacturer(s) the bidder must be registered/authorized with",
+      "Installation": "Yes",
+      "Bid Number": "JA-207652",
+      "Title": "Student and Staff Computing Devices",
+      "contact_info": "Primary Supplier Contact: John Doe, (123) 456-7890, johndoe@example.com",
+      "company_name": "Dallas ISD",
+      "Bid Summary": "Dallas ISD seeks to procure student and staff computing devices, including laptops, desktops, tablet devices, and display monitors, through this Request for Proposal (RFP). Vendors must have the ability to provide significant quantities of devices as requested in the pricing lines. The District reserves the right to award contracts to a single vendor or multiple vendors. Awarded vendors must provide computing devices that meet current industry standard specifications and include deployment services, white glove services, and warranty and warranty repair work."
+    },
+    "latency": 13.311988353729248,
+    "status": "success"
+  },
+  {
+    "agent": "AddendumReconciliationAgent",
+    "input": {
+      "bid_id": "Bid1"
+    },
+    "start_time": 1792986809.5336602,
+    "output": {
+      "changes": 5
+    },
+    "latency": 57.67547273635864,
+    "status": "success"
+  },
+  {
+    "agent": "ValidatorAgent",
+    "input": {
+      "fields_to_validate": 20
+    },
+    "start_time": 1792986867.2123477,
+    "output": {
+      "passed": 18,
+      "failed": 0,
+      "not_found": 0
+    },
+    "latency": 0.0022094249725341797,
+    "status": "success"
+  },
+  {
+    "agent": "QAReportAgent",
+    "input": {
+      "mode": "extraction",
+      "bid_id": "Bid1"
+    },
+    "start_time": 1792986867.2182827,
+    "output": "20 fields extracted",
+    "latency": 0.0005080699920654297,
+    "status": "success"
   }
-}
+]

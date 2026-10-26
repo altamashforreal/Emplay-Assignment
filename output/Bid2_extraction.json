@@ -1,172 +1,474 @@
 {
   "bid_id": "Bid2",
-  "bid_folder": "data/bids/Bid2",
-  "extraction_date": "2026-10-25",
   "fields": {
-    "Bid Number": {
-      "value": "#E20P4600040 (eMMA Project: BPM044557)",
-      "confidence": 0.98,
-      "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
-      ],
-      "notes": "Listed under Section 1 General Information"
-    },
-    "Title": {
-      "value": "Dell Laptops w/ Extended Warranty",
-      "confidence": 0.96,
-      "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1},
-        {"file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html", "page": 1}
-      ],
-      "notes": "Purchase Order Request for Proposals (PORFP) Hardware Master Contract"
-    },
-    "company_name": {
-      "value": "Maryland Department of Information Technology (DoIT) / State of Maryland",
-      "confidence": 0.90,
-      "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
-      ],
-      "notes": "Issued under Hardware Master Contract"
-    },
     "Due Date": {
-      "value": "Refer to eMMA portal solicitation schedule",
-      "confidence": 0.75,
+      "value": "06/01/2024 at 2:00 PM EDT",
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1},
-        {"file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "f82ec665bf3bba68",
+          "excerpt": "Purchase Order Request for Proposals (PORFP) \nHardware Master Contract \n \n \n2 \nQuestions \nDue \n(Closing) \nDate \nand \nTime: \n06/01/2024 at 2:00 PM EDT \nQuestions \nmust \nbe \nsubmitted \nin \nwriting \nto \n"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "3f8f1f3f025be60d",
+          "excerpt": "[TABLE]\n |  | Questions Due (Closing) Date and Time:\n06/01/2024 at 2:00 PM EDT\nQuestions must be submitted in writing to\nthawkins@treasurer.state.md.us with the subject line,\n\u201cQUESTION for Dell Laptop"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "90b6482bb0b4b143",
+          "excerpt": "1, 2023. Product Name Product Description Model # Qty Due Date"
+        }
       ],
-      "notes": "Submissions managed through eMaryland Marketplace Advantage (eMMA)"
+      "confidence": 1.0,
+      "notes": "Extracted from Passage 1 and Passage 2"
+    },
+    "Delivery Date": {
+      "value": "3 years following the date of delivery",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "3f399565cb4aaa41",
+          "excerpt": "Extended for all machines \npurchased - 3 Years \nWarranty \ncertificate or \nAffidavit to be \npresented upon \naward \nDate of \nDelivery \n3 years \nfollowing the \ndate of delivery"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "3f8f1f3f025be60d",
+          "excerpt": "[TABLE]\n |  | Questions Due (Closing) Date and Time:\n06/01/2024 at 2:00 PM EDT\nQuestions must be submitted in writing to\nthawkins@treasurer.state.md.us with the subject line,\n\u201cQUESTION for Dell Laptop"
+        },
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 3,
+          "chunk_id": "bd2107b428c44a79",
+          "excerpt": "in the order is subject to the applicable governing agreement between Customer and Supplier, except that title shall transfer from Supplier to FS instead of to Customer. If FS notifies Supplier after "
+        }
+      ],
+      "confidence": 0.8,
+      "notes": "Extracted from PORFP_-_Dell_Laptop_Final.pdf, Page 3"
     },
     "Pre Bid Meeting": {
-      "value": "None specified / Not mandatory",
-      "confidence": 0.85,
+      "value": "06/01/2024 at 2:00 PM EDT",
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "f82ec665bf3bba68",
+          "excerpt": "Purchase Order Request for Proposals (PORFP) \nHardware Master Contract \n \n \n2 \nQuestions \nDue \n(Closing) \nDate \nand \nTime: \n06/01/2024 at 2:00 PM EDT \nQuestions \nmust \nbe \nsubmitted \nin \nwriting \nto \n"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "ca46b718fa6fb72b",
+          "excerpt": "DATE and TIME: \n06/10/2024 \nPlace of Performance: \nMD State Treasurer's Office \n80 Clavert Street \nAnnapolis MD 21401 \nSpecial Instructions:"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "3f8f1f3f025be60d",
+          "excerpt": "[TABLE]\n |  | Questions Due (Closing) Date and Time:\n06/01/2024 at 2:00 PM EDT\nQuestions must be submitted in writing to\nthawkins@treasurer.state.md.us with the subject line,\n\u201cQUESTION for Dell Laptop"
+        }
       ],
-      "notes": "No mandatory pre-bid meeting recorded in PORFP Section 1"
+      "confidence": 1.0,
+      "notes": "Extracted from Passage 1, Source: PORFP_-_Dell_Laptop_Final.pdf, Page 2"
+    },
+    "Term of Bid": {
+      "value": "24 months prior to when a contract was awarded; and (b) if the contribution is made after the execution of a contract, then twice a year, throughout the contract term, on or before: (i) May 31, to cover the six (6) month period ending April 30; and (ii) November 30, to cover the six (6) month period ending October 31.",
+      "sources": [
+        {
+          "file": "Contract_Affidavit.pdf",
+          "page": 2,
+          "chunk_id": "2b98e10d2d882cd3",
+          "excerpt": "by the State, a county, a municipal corporation, or other political subdivision of the State, and shall cover the 24 months prior to when a contract was awarded; and (b) if the contribution is made af"
+        },
+        {
+          "file": "Contract_Affidavit.pdf",
+          "page": 2,
+          "chunk_id": "d5908afa27bac2a6",
+          "excerpt": "employment on the contract, the employee shall: (i) Abide by the terms of the statement; and"
+        },
+        {
+          "file": "Contract_Affidavit.pdf",
+          "page": 2,
+          "chunk_id": "a890966f37f8a6dd",
+          "excerpt": "the business, if other than an individual, certifies and agrees that, with respect to its employees to be employed under a contract resulting from this solicitation, the business shall: (a) Maintain a"
+        }
+      ],
+      "confidence": 1.0,
+      "notes": "Extracted from Contract_Affidavit.pdf, Page 2"
     },
     "Bid Bond Requirement": {
       "value": "Not required",
-      "confidence": 0.92,
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 2}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "4933a1dd198fa8bf",
+          "excerpt": "[TABLE]\nSecurity Requirements (if\n----------------------------------------\napplicable):"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "f8ea606fe491fac7",
+          "excerpt": "RS Only Master Contractors that are awarded a contract under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007, are eligible to submit a bid in response to this secondary competition Pu"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "ca46b718fa6fb72b",
+          "excerpt": "DATE and TIME: \n06/10/2024 \nPlace of Performance: \nMD State Treasurer's Office \n80 Clavert Street \nAnnapolis MD 21401 \nSpecial Instructions:"
+        }
       ],
-      "notes": "Master contract terms govern; no separate bid bond required for this PORFP"
-    },
-    "Term of Bid": {
-      "value": "Fixed Price contract for hardware procurement and extended warranty period",
-      "confidence": 0.88,
-      "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
-      ],
-      "notes": "PORFP Type: Fixed Price"
+      "confidence": 0.0,
+      "notes": "Not found in documents"
     },
     "Payment Terms": {
-      "value": "Net 30 days upon delivery, acceptance, and invoice approval",
-      "confidence": 0.82,
+      "value": "Net 30",
       "sources": [
-        {"file": "Contract_Affidavit.pdf", "page": 2}
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 3,
+          "chunk_id": "8b72705bc5f1dd0d",
+          "excerpt": "certain products shipped to end users in California, a State Environmental Fee will be applied to Customer\u2019s invoice. Supplier encourages customers to dispose of electronic equipment properly. Electro"
+        },
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 3,
+          "chunk_id": "4d229b5c6b86b53c",
+          "excerpt": "or for cloud/as-a-Service offerings, the applicable cloud terms of service (identified on the Offer Specific Terms referenced below); and (b) the terms referenced herein (collectively, the \u201cGoverning "
+        },
+        {
+          "file": "Contract_Affidavit.pdf",
+          "page": 2,
+          "chunk_id": "2b98e10d2d882cd3",
+          "excerpt": "by the State, a county, a municipal corporation, or other political subdivision of the State, and shall cover the 24 months prior to when a contract was awarded; and (b) if the contribution is made af"
+        }
       ],
-      "notes": "Subject to State of Maryland standard procurement terms"
-    },
-    "Delivery Date": {
-      "value": "Within 30 calendar days after receipt of Purchase Order (ARO)",
-      "confidence": 0.78,
-      "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 2}
-      ],
-      "notes": "Delivery to designated State facilities"
+      "confidence": 1.0,
+      "notes": "Extracted from Dell_Laptop_Specs.pdf, Page 3"
     },
     "Any Additional Documentation Required": {
-      "value": "Contract Affidavit and Mercury Affidavit",
-      "confidence": 0.96,
+      "value": "Required affidavits, forms, certificates, insurance, W-9, etc.",
       "sources": [
-        {"file": "Contract_Affidavit.pdf", "page": 1},
-        {"file": "Mercury_Affidavit.pdf", "page": 1}
+        {
+          "file": "Contract_Affidavit.pdf",
+          "page": 1,
+          "chunk_id": "8cd077c1692116e6",
+          "excerpt": "I hereby affirm that I, \n \n(name of affiant) am the \n(title) and duly authorized representative of \n(name of business entity) and that I possess the legal \nauthority to make this affidavit on behalf o"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "3f399565cb4aaa41",
+          "excerpt": "Extended for all machines \npurchased - 3 Years \nWarranty \ncertificate or \nAffidavit to be \npresented upon \naward \nDate of \nDelivery \n3 years \nfollowing the \ndate of delivery"
+        },
+        {
+          "file": "Mercury_Affidavit.pdf",
+          "page": 1,
+          "chunk_id": "6a84e8575d451742",
+          "excerpt": "respect to any misrepresentation made or any violation of the obligations, terms and covenants undertaken by the above business with respect to (1) this affidavit, (2) the contract, and (3) other affi"
+        }
       ],
-      "notes": "Both affidavits must be executed and returned with proposal"
+      "confidence": 1.0,
+      "notes": "Extracted from Passage 1 of Contract_Affidavit.pdf"
     },
     "Contract or Cooperative to use": {
-      "value": "State of Maryland Hardware Master Contract (BPO / Master Agreement)",
-      "confidence": 0.95,
+      "value": "Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007",
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "f8ea606fe491fac7",
+          "excerpt": "RS Only Master Contractors that are awarded a contract under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007, are eligible to submit a bid in response to this secondary competition Pu"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "760072eedfd87bd0",
+          "excerpt": "Purchase Order Request for Proposals (PORFP) \nHardware Master Contract \n \n \n3 \n \nAgency POC Name: \nTamaira Hawkins \nAgency POC \nPhone Number: \n410-260-7533 \nAgency POC Email \nthawkins@treasurer.state."
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "a638795db546d98c",
+          "excerpt": "Purchase Order Request for Proposals (PORFP) \nHardware Master Contract \n \n \n1"
+        }
       ],
-      "notes": "PORFP issued to Master Contractors only"
+      "confidence": 1.0,
+      "notes": "Extracted from Passage 1"
     },
     "Bid Submission Type": {
-      "value": "Electronic via eMaryland Marketplace Advantage (eMMA)",
-      "confidence": 0.92,
+      "value": "electronic portal",
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "f1886ed17a14467c",
+          "excerpt": "NS \nPurchase Order Request for Proposal (PORFP) responses will only \nbe accepted through the State's eMaryland Marketplace Advantage \n(eMMA) e-Procurement system. Bids will not be accepted by email, \n"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "f8ea606fe491fac7",
+          "excerpt": "RS Only Master Contractors that are awarded a contract under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007, are eligible to submit a bid in response to this secondary competition Pu"
+        },
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "chunk_id": "cbaaf97a57286fd0",
+          "excerpt": "BPM044557 - Dell Laptops w/Extended Warranty Are you sure you want to delete this note? This solicitation is CLOSED MailEmail Facebook LinkedIn Twitter Disclaimer Please note that Statewide content is"
+        }
       ],
-      "notes": "Online electronic submission required"
+      "confidence": 0.9,
+      "notes": "Passage 1: 'Purchase Order Request for Proposal (PORFP) responses will only be accepted through the State's eMaryland Marketplace Advantage (eMMA) e-Procurement system.'"
     },
     "Model_no": {
-      "value": "Dell Latitude 5550",
-      "confidence": 0.99,
+      "value": "MTL 65WADPT",
       "sources": [
-        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "90b6482bb0b4b143",
+          "excerpt": "1, 2023. Product Name Product Description Model # Qty Due Date"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "eae2753f75e09b98",
+          "excerpt": "Work FA II - Printers and Associated Peripherals (Provide product specifications below. If some or all specifications are unknown, Master Contractors may propose products based on a detailed descripti"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "a8a795a504ecabe2",
+          "excerpt": "an \nitem is returned due to damage or incorrect product shipped."
+        }
       ],
-      "notes": "SI# CC7802 Dell Latitude 5550 specified in Dell_Laptop_Specs.pdf"
+      "confidence": 0.9,
+      "notes": "Extracted from Dell_Laptop_Specs.pdf, Page 1"
     },
     "Part_no": {
-      "value": "SKUs: 210-BLYZ, 379-BFNZ, 619-ARSB, 658-BCSB, 338-CNRG, 370-BBTL, 400-BRFT",
-      "confidence": 0.97,
-      "sources": [
-        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
-      ],
-      "notes": "Comprehensive manufacturer SKU and component list detailed in specs PDF"
+      "value": null,
+      "sources": [],
+      "confidence": 0.0,
+      "notes": "Part_no not found in the provided passages"
     },
     "Product": {
-      "value": "Dell Latitude Laptop Computers with Extended Warranty",
-      "confidence": 0.98,
+      "value": "Dell Laptop",
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1},
-        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "eae2753f75e09b98",
+          "excerpt": "Work FA II - Printers and Associated Peripherals (Provide product specifications below. If some or all specifications are unknown, Master Contractors may propose products based on a detailed descripti"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "3f8f1f3f025be60d",
+          "excerpt": "[TABLE]\n |  | Questions Due (Closing) Date and Time:\n06/01/2024 at 2:00 PM EDT\nQuestions must be submitted in writing to\nthawkins@treasurer.state.md.us with the subject line,\n\u201cQUESTION for Dell Laptop"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "90b6482bb0b4b143",
+          "excerpt": "1, 2023. Product Name Product Description Model # Qty Due Date"
+        }
       ],
-      "notes": "Functional Area: Hardware & Associated Peripherals"
+      "confidence": 0.9,
+      "notes": "Extracted from Passage 1, Source: PORFP_-_Dell_Laptop_Final.pdf, Page 3"
     },
     "Product Specification": {
-      "value": "Dell Latitude 5550, Intel Core processor, SSD storage, extended hardware service & warranty",
-      "confidence": 0.95,
+      "value": "CPU: Intel Core i7, RAM: 16GB, Storage: 512GB SSD, Display: 15.6\" Full HD, Warranty: 3 years, Extended Warranty: 3 years, Thunderbolt 4 Dock: WD22TB4",
       "sources": [
-        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "3f399565cb4aaa41",
+          "excerpt": "Extended for all machines \npurchased - 3 Years \nWarranty \ncertificate or \nAffidavit to be \npresented upon \naward \nDate of \nDelivery \n3 years \nfollowing the \ndate of delivery"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "d30d3a2fb52dc0c7",
+          "excerpt": "Dock \u2013 WD22TB4 \n \nDell Thunderbolt 4 Dock \u2013 \nWD22TB4 \n \nWD22TB4 \n \n30 \n06/10/2024 \n \n \n \n \n \nFA V - Manufacturer\u2019s Extended Warranty \n(Provide a detailed description of warranty requirements and deliv"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "eae2753f75e09b98",
+          "excerpt": "Work FA II - Printers and Associated Peripherals (Provide product specifications below. If some or all specifications are unknown, Master Contractors may propose products based on a detailed descripti"
+        }
       ],
-      "notes": "Line item configuration list with detailed subsystem SKUs"
+      "confidence": 0.9,
+      "notes": "Extracted from multiple passages, including PORFP_-_Dell_Laptop_Final.pdf, Page 3"
     },
     "MFG for Registration": {
-      "value": "Dell Technologies / Authorized Dell Master Reseller",
-      "confidence": 0.94,
+      "value": "Dell",
       "sources": [
-        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "9486b9b64c145d7d",
+          "excerpt": "l. \nThe state reserves the right to request a Letter of Authorization \n(LOA) from the Manufacturer or Distributor."
+        },
+        {
+          "file": "Mercury_Affidavit.pdf",
+          "page": 1,
+          "chunk_id": "af95f156b686a25c",
+          "excerpt": "Signature Print Name: _____________________________________ Authorized Representative and Affiant"
+        },
+        {
+          "file": "Contract_Affidavit.pdf",
+          "page": 1,
+          "chunk_id": "8cd077c1692116e6",
+          "excerpt": "I hereby affirm that I, \n \n(name of affiant) am the \n(title) and duly authorized representative of \n(name of business entity) and that I possess the legal \nauthority to make this affidavit on behalf o"
+        }
       ],
-      "notes": "Authorized manufacturer channel qualification required"
+      "confidence": 1.0,
+      "notes": "Extracted from Passage 5, Source: PORFP_-_Dell_Laptop_Final.pdf, Page 1"
     },
     "Installation": {
-      "value": "Standard unboxing and desktop delivery; configuration as specified by agency",
-      "confidence": 0.70,
+      "value": null,
+      "sources": [],
+      "confidence": 0.0,
+      "notes": "Not found in documents"
+    },
+    "Bid Number": {
+      "value": "E20P4600040",
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 2}
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "chunk_id": "cbaaf97a57286fd0",
+          "excerpt": "BPM044557 - Dell Laptops w/Extended Warranty Are you sure you want to delete this note? This solicitation is CLOSED MailEmail Facebook LinkedIn Twitter Disclaimer Please note that Statewide content is"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "f1886ed17a14467c",
+          "excerpt": "NS \nPurchase Order Request for Proposal (PORFP) responses will only \nbe accepted through the State's eMaryland Marketplace Advantage \n(eMMA) e-Procurement system. Bids will not be accepted by email, \n"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "3f8f1f3f025be60d",
+          "excerpt": "[TABLE]\n |  | Questions Due (Closing) Date and Time:\n06/01/2024 at 2:00 PM EDT\nQuestions must be submitted in writing to\nthawkins@treasurer.state.md.us with the subject line,\n\u201cQUESTION for Dell Laptop"
+        }
       ],
-      "notes": "Desktop deployment services under Master Contract"
+      "confidence": 1.0,
+      "notes": "Found in Passage 4"
+    },
+    "Title": {
+      "value": "Dell Laptops w/Extended Warranty",
+      "sources": [
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "chunk_id": "cbaaf97a57286fd0",
+          "excerpt": "BPM044557 - Dell Laptops w/Extended Warranty Are you sure you want to delete this note? This solicitation is CLOSED MailEmail Facebook LinkedIn Twitter Disclaimer Please note that Statewide content is"
+        },
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 3,
+          "chunk_id": "bd2107b428c44a79",
+          "excerpt": "in the order is subject to the applicable governing agreement between Customer and Supplier, except that title shall transfer from Supplier to FS instead of to Customer. If FS notifies Supplier after "
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "c5f6f074472402ea",
+          "excerpt": "on \n \nPORFP Number: \n \n#E20P4600040 \neMMA Project Number: BPM044557 \nPORFP Type: \n \nFixed Price \nFunctional Area/s (FA) \nfor this PORFP: \n \n FA I (Printers and Associated Peripherals) \n FA V (Manufact"
+        }
+      ],
+      "confidence": 1.0,
+      "notes": "Extracted from Passage 1: Source: Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, Page 1"
     },
     "contact_info": {
-      "value": "Designated State Procurement Officer as identified in eMMA portal",
-      "confidence": 0.76,
+      "value": "thawkins@treasurer.state.md.us",
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "760072eedfd87bd0",
+          "excerpt": "Purchase Order Request for Proposals (PORFP) \nHardware Master Contract \n \n \n3 \n \nAgency POC Name: \nTamaira Hawkins \nAgency POC \nPhone Number: \n410-260-7533 \nAgency POC Email \nthawkins@treasurer.state."
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "f82ec665bf3bba68",
+          "excerpt": "Purchase Order Request for Proposals (PORFP) \nHardware Master Contract \n \n \n2 \nQuestions \nDue \n(Closing) \nDate \nand \nTime: \n06/01/2024 at 2:00 PM EDT \nQuestions \nmust \nbe \nsubmitted \nin \nwriting \nto \n"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "3f8f1f3f025be60d",
+          "excerpt": "[TABLE]\n |  | Questions Due (Closing) Date and Time:\n06/01/2024 at 2:00 PM EDT\nQuestions must be submitted in writing to\nthawkins@treasurer.state.md.us with the subject line,\n\u201cQUESTION for Dell Laptop"
+        }
       ],
-      "notes": "All communications directed via procurement system"
+      "confidence": 1.0,
+      "notes": "Extracted from Passage 2"
+    },
+    "company_name": {
+      "value": "State Treasurer's Office/ Information Technology",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "760072eedfd87bd0",
+          "excerpt": "Purchase Order Request for Proposals (PORFP) \nHardware Master Contract \n \n \n3 \n \nAgency POC Name: \nTamaira Hawkins \nAgency POC \nPhone Number: \n410-260-7533 \nAgency POC Email \nthawkins@treasurer.state."
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "637cd0f91041363a",
+          "excerpt": "tion \n \nAgency / Division Name: \nState Treasurer's Office/ Information Technology"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "d3f5ba7705e5f20e",
+          "excerpt": "e) \n \nAgency On-site Contact \nName: \nJames Simpson \nAgency On-site \nPhone Number: \n410-260-6063 \nAgency On-site Email \njsimpson@treasurer.state.\nmd.us \nAgency On-site \nFax: \n \nAgency On-site Address: "
+        }
+      ],
+      "confidence": 1.0,
+      "notes": "Found in Passage 2"
     },
     "Bid Summary": {
-      "value": "Procurement of Dell Latitude 5550 laptops with extended warranty under the State Hardware Master Contract, requiring Contract and Mercury Affidavits submitted via eMMA.",
-      "confidence": 0.95,
+      "value": "Master Contractors that are awarded a contract under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007, are eligible to submit a bid in response to this secondary competition Purchase Order Request for Proposal (PORFP). SMALL BUSINESS RESERVE (SBR) PROCUREMENT This is a Small Business Reserve Procurement for which award will be limited to certified small business vendors. Only businesses that meet the statutory requirements set forth in State Finance and Procurement Article, \u00a7\u00a714-501\u201414-505,",
       "sources": [
-        {"file": "PORFP_-_Dell_Laptop_Final.pdf", "page": 1},
-        {"file": "Dell_Laptop_Specs.pdf", "page": 1}
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "f8ea606fe491fac7",
+          "excerpt": "RS Only Master Contractors that are awarded a contract under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007, are eligible to submit a bid in response to this secondary competition Pu"
+        },
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 3,
+          "chunk_id": "c9edefe144c09834",
+          "excerpt": "basis or as part of a solution, Customer shall include the applicable software license terms, services terms, and/or offer-specific terms in a written agreement with the end-user and provide written e"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "f1886ed17a14467c",
+          "excerpt": "NS \nPurchase Order Request for Proposal (PORFP) responses will only \nbe accepted through the State's eMaryland Marketplace Advantage \n(eMMA) e-Procurement system. Bids will not be accepted by email, \n"
+        }
       ],
-      "notes": "Synthesized from PORFP and specification sheets"
+      "confidence": 0.9,
+      "notes": "Extracted from Passage 1"
     }
-  }
+  },
+  "addendum_changes": [],
+  "validation": {
+    "passed": 18,
+    "failed": 2,
+    "not_found": 0
+  },
+  "created_at": "2026-10-26T03:39:51.048812"
 }
