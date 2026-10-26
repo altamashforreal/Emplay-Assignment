@@ -1,7 +1,6 @@
-# Place your bid folders here
-# Structure:
-#   data/bids/Bid1/  (HTML + PDFs for Bid 1)
-#   data/bids/Bid2/  (HTML + PDFs for Bid 2)
-#
-# BM25 index files will be auto-created in:
-#   data/bm25_indices/
+# Data Directory
+
+This directory stores bid documents and generated search indices.
+
+- **`data/bids/`**: Contains bid folders (`Bid1/`, `Bid2/`). See [data/bids/README.md](bids/README.md) for complete file breakdowns and document type mappings.
+- **`data/bm25_indices/`**: Stores generated BM25 inverted index files (`<bid_id>_bm25.pkl` and `<bid_id>_meta.json`) for fast keyword matching.
