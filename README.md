@@ -14,13 +14,13 @@
 1. [Demo Video](#-system-walkthrough--demo-video)
 2. [Architecture](#architecture)
 3. [Quick Start](#quick-start)
-3. [Setup](#setup)
-4. [Usage](#usage)
-5. [Design Decisions](#design-decisions)
-6. [Evaluation Results](#evaluation-results)
-7. [Agent Trace Example](#agent-trace-example)
-8. [Project Structure](#project-structure)
-9. [Assumptions & Limitations](#assumptions--limitations)
+4. [Setup](#setup)
+5. [Usage](#usage)
+6. [Design Decisions](#design-decisions)
+7. [Evaluation Results](#evaluation-results)
+8. [Agent Trace Example](#agent-trace-example)
+9. [Project Structure](#project-structure)
+10. [Assumptions & Limitations](#assumptions--limitations)
 
 ---
 
